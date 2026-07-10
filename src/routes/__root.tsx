@@ -84,14 +84,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Shop exquisite 22K & 24K gold, diamond and 925 silver jewellery from RAS Jewellers. 100% BIS hallmarked, trusted for 25+ years across Gujarat.",
       },
       { name: "author", content: "RAS Jewellers" },
-      { property: "og:title", content: "RAS Jewellers | Online Gold & Silver Jewellery" },
+      { property: "og:title", content: "RAS Jewellers | Online Gold & Silver Jewellery in Gujarat" },
       {
         property: "og:description",
         content:
-          "Exquisite BIS hallmarked gold, diamond & silver jewellery. Trusted for 25+ years in Gujarat.",
+          "Shop exquisite 22K & 24K gold, diamond and 925 silver jewellery from RAS Jewellers. 100% BIS hallmarked, trusted for 25+ years across Gujarat.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "RAS Jewellers | Online Gold & Silver Jewellery in Gujarat" },
+      { name: "twitter:description", content: "Shop exquisite 22K & 24K gold, diamond and 925 silver jewellery from RAS Jewellers. 100% BIS hallmarked, trusted for 25+ years across Gujarat." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/518f0830-9cd2-48f9-87db-8ae56a82c17d" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/518f0830-9cd2-48f9-87db-8ae56a82c17d" },
     ],
     links: [
       {
