@@ -108,10 +108,35 @@ export function Header() {
               className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
             />
           </form>
-          <ul className="space-y-3">
+          <ul className="space-y-1">
             {NAV.map((n) => (
-              <li key={n.label} className="text-sm font-medium text-foreground/80">
-                {n.label}
+              <li key={n.label}>
+                <button
+                  onClick={() => {
+                    handleNavClick(n.label);
+                    setMenuOpen(false);
+                  }}
+                  className="block w-full py-2 text-left text-sm font-medium text-foreground/80"
+                >
+                  {n.label}
+                </button>
+                {n.items.length > 0 && (
+                  <ul className="ml-3 space-y-1 border-l border-border pl-3">
+                    {n.items.map((it) => (
+                      <li key={it}>
+                        <button
+                          onClick={() => {
+                            handleNavClick(it);
+                            setMenuOpen(false);
+                          }}
+                          className="block w-full py-1.5 text-left text-sm text-foreground/60 hover:text-gold-dark"
+                        >
+                          {it}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
