@@ -58,6 +58,15 @@ export const NAV = [
 
 export type Material = "gold" | "silver" | "diamond";
 
+export type Category =
+  | "Necklaces"
+  | "Rings"
+  | "Bridal Sets"
+  | "Earrings"
+  | "Bangles"
+  | "Chains & Pendants"
+  | "Anklets";
+
 export type Product = {
   id: string;
   name: string;
@@ -65,7 +74,38 @@ export type Product = {
   price: number;
   image: string;
   material: Material;
+  category: Category;
 };
+
+/** A single active filter shared across the site (nav, tiles, search). */
+export type Filter =
+  | { kind: "all" }
+  | { kind: "material"; value: Material }
+  | { kind: "category"; value: Category };
+
+/** Broadcast a filter so the Trending section can react from anywhere. */
+export function applyFilter(filter: Filter) {
+  window.dispatchEvent(new CustomEvent<Filter>("ras-filter", { detail: filter }));
+  const trending = document.getElementById("trending");
+  if (trending) trending.scrollIntoView({ behavior: "smooth" });
+}
+
+/** Map a nav/menu label to a product category (or null if not a category). */
+export function labelToCategory(label: string): Category | null {
+  const map: Record<string, Category> = {
+    Rings: "Rings",
+    Necklaces: "Necklaces",
+    Earrings: "Earrings",
+    Bangles: "Bangles",
+    Chains: "Chains & Pendants",
+    "Chains & Pendants": "Chains & Pendants",
+    "Bridal Sets": "Bridal Sets",
+    Bridal: "Bridal Sets",
+    Anklets: "Anklets",
+    Payal: "Anklets",
+  };
+  return map[label] ?? null;
+}
 
 /**
  * PRICES BELOW ARE PLACEHOLDER ESTIMATES ONLY — these are not your real
