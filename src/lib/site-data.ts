@@ -127,7 +127,7 @@ export const TRENDING: Product[] = [
   { id: "12", name: "Gold Necklace Set", code: "SET22-012", price: 132000, image: goldSet, material: "gold", category: "Necklaces" },
 ];
 
-export const CATEGORIES = [
+export const CATEGORIES: { title: Category; image: string; count: number }[] = [
   { title: "Necklaces", image: necklaceClassic, count: 120 },
   { title: "Rings", image: mensRing, count: 96 },
   { title: "Bridal Sets", image: necklaceBridal, count: 48 },
