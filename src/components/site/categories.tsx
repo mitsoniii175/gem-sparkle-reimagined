@@ -1,4 +1,4 @@
-import { CATEGORIES } from "@/lib/site-data";
+import { CATEGORIES, applyFilter } from "@/lib/site-data";
 
 export function Categories() {
   return (
@@ -10,7 +10,11 @@ export function Categories() {
         </div>
         <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-6">
           {CATEGORIES.map((c) => (
-            <a key={c.title} href="#trending" className="group text-center">
+            <button
+              key={c.title}
+              onClick={() => applyFilter({ kind: "category", value: c.title })}
+              className="group text-center"
+            >
               <div className="overflow-hidden rounded-full ring-1 ring-border transition-all group-hover:ring-2 group-hover:ring-primary">
                 <img
                   src={c.image}
@@ -23,7 +27,7 @@ export function Categories() {
               </div>
               <h3 className="mt-3 font-sans text-sm font-medium">{c.title}</h3>
               <p className="text-xs text-muted-foreground">{c.count} designs</p>
-            </a>
+            </button>
           ))}
         </div>
       </div>
