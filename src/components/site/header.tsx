@@ -1,7 +1,21 @@
 import { useState } from "react";
 import { Search, Heart, ShoppingBag, User, Facebook, Instagram, Menu, X } from "lucide-react";
-import { NAV, SITE } from "@/lib/site-data";
+import { NAV, SITE, applyFilter, labelToCategory } from "@/lib/site-data";
 import logo from "@/assets/ras-logo.jpg";
+
+function handleNavClick(label: string) {
+  const cat = labelToCategory(label);
+  if (cat) {
+    applyFilter({ kind: "category", value: cat });
+    return;
+  }
+  const lower = label.toLowerCase();
+  if (lower.includes("gold")) return applyFilter({ kind: "material", value: "gold" });
+  if (lower.includes("silver")) return applyFilter({ kind: "material", value: "silver" });
+  if (lower.includes("diamond")) return applyFilter({ kind: "material", value: "diamond" });
+  // Fallback: just scroll to the products grid.
+  applyFilter({ kind: "all" });
+}
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -94,10 +108,35 @@ export function Header() {
               className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
             />
           </form>
-          <ul className="space-y-3">
+          <ul className="space-y-1">
             {NAV.map((n) => (
-              <li key={n.label} className="text-sm font-medium text-foreground/80">
-                {n.label}
+              <li key={n.label}>
+                <button
+                  onClick={() => {
+                    handleNavClick(n.label);
+                    setMenuOpen(false);
+                  }}
+                  className="block w-full py-2 text-left text-sm font-medium text-foreground/80"
+                >
+                  {n.label}
+                </button>
+                {n.items.length > 0 && (
+                  <ul className="ml-3 space-y-1 border-l border-border pl-3">
+                    {n.items.map((it) => (
+                      <li key={it}>
+                        <button
+                          onClick={() => {
+                            handleNavClick(it);
+                            setMenuOpen(false);
+                          }}
+                          className="block w-full py-1.5 text-left text-sm text-foreground/60 hover:text-gold-dark"
+                        >
+                          {it}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
@@ -109,15 +148,22 @@ export function Header() {
         <ul className="container-x flex items-center justify-center gap-8 py-3">
           {NAV.map((n) => (
             <li key={n.label} className="group relative">
-              <button className="text-sm font-medium text-foreground/80 transition-colors group-hover:text-gold-dark">
+              <button
+                onClick={() => handleNavClick(n.label)}
+                className="text-sm font-medium text-foreground/80 transition-colors group-hover:text-gold-dark"
+              >
                 {n.label}
               </button>
               {n.items.length > 0 && (
                 <div className="invisible absolute left-1/2 top-full z-50 mt-2 -translate-x-1/2 rounded-lg border border-border bg-card p-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
                   {n.items.map((it) => (
-                    <a key={it} href="#trending" className="block whitespace-nowrap rounded px-4 py-2 text-sm text-foreground/70 hover:bg-secondary hover:text-gold-dark">
+                    <button
+                      key={it}
+                      onClick={() => handleNavClick(it)}
+                      className="block w-full whitespace-nowrap rounded px-4 py-2 text-left text-sm text-foreground/70 hover:bg-secondary hover:text-gold-dark"
+                    >
                       {it}
-                    </a>
+                    </button>
                   ))}
                 </div>
               )}

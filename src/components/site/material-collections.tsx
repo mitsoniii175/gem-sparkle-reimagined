@@ -1,6 +1,6 @@
-import { MATERIAL_COLLECTIONS, type Material } from "@/lib/site-data";
+import { MATERIAL_COLLECTIONS, applyFilter } from "@/lib/site-data";
 
-export function MaterialCollections({ onSelect }: { onSelect: (m: Material) => void }) {
+export function MaterialCollections() {
   return (
     <section className="container-x py-16">
       <div className="mb-10 text-center">
@@ -14,7 +14,7 @@ export function MaterialCollections({ onSelect }: { onSelect: (m: Material) => v
         {MATERIAL_COLLECTIONS.map((c) => (
           <button
             key={c.material}
-            onClick={() => onSelect(c.material)}
+            onClick={() => applyFilter({ kind: "material", value: c.material })}
             className="group relative overflow-hidden rounded-2xl text-left"
           >
             <img
