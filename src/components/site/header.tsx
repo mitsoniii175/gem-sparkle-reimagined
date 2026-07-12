@@ -1,7 +1,21 @@
 import { useState } from "react";
 import { Search, Heart, ShoppingBag, User, Facebook, Instagram, Menu, X } from "lucide-react";
-import { NAV, SITE } from "@/lib/site-data";
+import { NAV, SITE, applyFilter, labelToCategory } from "@/lib/site-data";
 import logo from "@/assets/ras-logo.jpg";
+
+function handleNavClick(label: string) {
+  const cat = labelToCategory(label);
+  if (cat) {
+    applyFilter({ kind: "category", value: cat });
+    return;
+  }
+  const lower = label.toLowerCase();
+  if (lower.includes("gold")) return applyFilter({ kind: "material", value: "gold" });
+  if (lower.includes("silver")) return applyFilter({ kind: "material", value: "silver" });
+  if (lower.includes("diamond")) return applyFilter({ kind: "material", value: "diamond" });
+  // Fallback: just scroll to the products grid.
+  applyFilter({ kind: "all" });
+}
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
