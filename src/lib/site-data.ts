@@ -1,10 +1,15 @@
-import necklace from "@/assets/p-necklace.jpg";
-import gentsring from "@/assets/p-gentsring.jpg";
-import lionring from "@/assets/p-lionring.jpg";
-import bangle from "@/assets/p-bangle.jpg";
-import bridal from "@/assets/p-bridal.jpg";
-import earrings from "@/assets/p-earrings.jpg";
-import chain from "@/assets/p-chain.jpg";
+import necklaceClassic from "@/assets/products/necklace-classic.jpg";
+import necklaceBridal from "@/assets/products/necklace-bridal.jpg";
+import earrings1 from "@/assets/products/earrings-1.jpg";
+import earrings2 from "@/assets/products/earrings-2.jpg";
+import bangles1 from "@/assets/products/bangles-1.jpg";
+import bangles2 from "@/assets/products/bangles-2.jpg";
+import payalSilver1 from "@/assets/products/payal-silver-1.jpg";
+import payalSilver2 from "@/assets/products/payal-silver-2.jpg";
+import mensChain from "@/assets/products/mens-chain.jpg";
+import mensRing from "@/assets/products/mens-ring.jpg";
+import mensBracelet from "@/assets/products/mens-bracelet.jpg";
+import goldSet from "@/assets/products/gold-set.jpg";
 
 export const SITE = {
   name: "RAS JEWELLERS",
@@ -62,35 +67,39 @@ export type Product = {
   material: Material;
 };
 
+/**
+ * PRICES BELOW ARE PLACEHOLDER ESTIMATES ONLY — these are not your real
+ * per-piece prices (I don't have your weight/making-charge data).
+ * Please update `price` and `code` for each item with your actual figures.
+ */
 export const TRENDING: Product[] = [
-  { id: "1", name: "Rose Gold Hexagon Link Necklace Set", code: "1RN18-188", price: 121396, image: necklace, material: "gold" },
-  { id: "2", name: "Yellow Gold Jaguar Design Gents Ring", code: "JRG22-2032", price: 200035, image: gentsring, material: "gold" },
-  { id: "3", name: 'Men\'s "King" Lion Face Ring', code: "JRG22-2069", price: 127219, image: lionring, material: "gold" },
-  { id: "4", name: "Nfinity Loop Designer Ring", code: "VPLR18-257", price: 49140, image: bangle, material: "gold" },
-  { id: "5", name: "Royal Bridal Necklace Set", code: "BRD22-901", price: 289500, image: bridal, material: "gold" },
-  { id: "6", name: "Solitaire Drop Earrings", code: "EAR18-442", price: 38900, image: earrings, material: "diamond" },
-  { id: "7", name: "Diamond Pendant Chain", code: "PND18-118", price: 42300, image: chain, material: "diamond" },
-  { id: "8", name: "Rose Gold Hexagon Necklace", code: "1RN18-190", price: 118200, image: necklace, material: "gold" },
-  { id: "9", name: "925 Silver Oxidised Anklet Pair", code: "SLA92-311", price: 4200, image: bangle, material: "silver" },
-  { id: "10", name: "Sterling Silver Chain Bracelet", code: "SLB92-118", price: 3150, image: chain, material: "silver" },
+  { id: "1", name: "Bridal Gold Necklace Set", code: "BRD22-001", price: 285000, image: necklaceBridal, material: "gold" },
+  { id: "2", name: "Classic Gold Necklace", code: "NCK22-002", price: 98500, image: necklaceClassic, material: "gold" },
+  { id: "3", name: "Traditional Gold Earrings", code: "EAR22-003", price: 32500, image: earrings1, material: "gold" },
+  { id: "4", name: "Designer Gold Earrings", code: "EAR22-004", price: 27800, image: earrings2, material: "gold" },
+  { id: "5", name: "Gold Bangles Set", code: "BNG22-005", price: 156000, image: bangles1, material: "gold" },
+  { id: "6", name: "Classic Gold Bangles", code: "BNG22-006", price: 89000, image: bangles2, material: "gold" },
+  { id: "7", name: "925 Silver Payal Pair", code: "PYL92-007", price: 4800, image: payalSilver1, material: "silver" },
+  { id: "8", name: "925 Silver Designer Payal", code: "PYL92-008", price: 5600, image: payalSilver2, material: "silver" },
+  { id: "9", name: "Men's Gold Chain", code: "CHN22-009", price: 112000, image: mensChain, material: "gold" },
+  { id: "10", name: "Men's Gold Ring", code: "RNG22-010", price: 68000, image: mensRing, material: "gold" },
+  { id: "11", name: "Men's Gold Bracelet", code: "BRC22-011", price: 74500, image: mensBracelet, material: "gold" },
+  { id: "12", name: "Gold Necklace Set", code: "SET22-012", price: 132000, image: goldSet, material: "gold" },
 ];
 
 export const CATEGORIES = [
-  { title: "Necklaces", image: necklace, count: 120 },
-  { title: "Rings", image: gentsring, count: 96 },
-  { title: "Bridal Sets", image: bridal, count: 48 },
-  { title: "Earrings", image: earrings, count: 84 },
-  { title: "Bangles", image: bangle, count: 64 },
-  { title: "Chains & Pendants", image: chain, count: 72 },
+  { title: "Necklaces", image: necklaceClassic, count: 120 },
+  { title: "Rings", image: mensRing, count: 96 },
+  { title: "Bridal Sets", image: necklaceBridal, count: 48 },
+  { title: "Earrings", image: earrings1, count: 84 },
+  { title: "Bangles", image: bangles1, count: 64 },
+  { title: "Chains & Pendants", image: mensChain, count: 72 },
 ];
 
 export const inr = (n: number) => `₹ ${n.toLocaleString("en-IN")}/-`;
 
 /**
- * Gold & Silver collection banners.
- * Images below are free-to-use stock photography (Unsplash License) used only
- * as placeholders — swap the `image` values for real photography of your own
- * pieces whenever you have shots ready.
+ * Gold & Silver collection banners — now using your real product photography.
  */
 export const MATERIAL_COLLECTIONS: {
   title: string;
@@ -102,12 +111,12 @@ export const MATERIAL_COLLECTIONS: {
     title: "Gold Collection",
     material: "gold",
     description: "22K & 24K BIS hallmarked gold, handcrafted for everyday elegance and celebration.",
-    image: "https://images.unsplash.com/photo-1758995115867-4ef47c98824e?w=1200&auto=format&fit=crop&q=80",
+    image: goldSet,
   },
   {
     title: "Silver Collection",
     material: "silver",
     description: "925 sterling silver pieces — light, versatile and made for daily wear.",
-    image: "https://images.unsplash.com/photo-1739194806935-3b4c66aee282?w=1200&auto=format&fit=crop&q=80",
+    image: payalSilver2,
   },
 ];
