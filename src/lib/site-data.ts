@@ -113,18 +113,18 @@ export function labelToCategory(label: string): Category | null {
  * Please update `price` and `code` for each item with your actual figures.
  */
 export const TRENDING: Product[] = [
-  { id: "1", name: "Bridal Gold Necklace Set", code: "BRD22-001", price: 285000, image: necklaceBridal, material: "gold" },
-  { id: "2", name: "Classic Gold Necklace", code: "NCK22-002", price: 98500, image: necklaceClassic, material: "gold" },
-  { id: "3", name: "Traditional Gold Earrings", code: "EAR22-003", price: 32500, image: earrings1, material: "gold" },
-  { id: "4", name: "Designer Gold Earrings", code: "EAR22-004", price: 27800, image: earrings2, material: "gold" },
-  { id: "5", name: "Gold Bangles Set", code: "BNG22-005", price: 156000, image: bangles1, material: "gold" },
-  { id: "6", name: "Classic Gold Bangles", code: "BNG22-006", price: 89000, image: bangles2, material: "gold" },
-  { id: "7", name: "925 Silver Payal Pair", code: "PYL92-007", price: 4800, image: payalSilver1, material: "silver" },
-  { id: "8", name: "925 Silver Designer Payal", code: "PYL92-008", price: 5600, image: payalSilver2, material: "silver" },
-  { id: "9", name: "Men's Gold Chain", code: "CHN22-009", price: 112000, image: mensChain, material: "gold" },
-  { id: "10", name: "Men's Gold Ring", code: "RNG22-010", price: 68000, image: mensRing, material: "gold" },
-  { id: "11", name: "Men's Gold Bracelet", code: "BRC22-011", price: 74500, image: mensBracelet, material: "gold" },
-  { id: "12", name: "Gold Necklace Set", code: "SET22-012", price: 132000, image: goldSet, material: "gold" },
+  { id: "1", name: "Bridal Gold Necklace Set", code: "BRD22-001", price: 285000, image: necklaceBridal, material: "gold", category: "Bridal Sets" },
+  { id: "2", name: "Classic Gold Necklace", code: "NCK22-002", price: 98500, image: necklaceClassic, material: "gold", category: "Necklaces" },
+  { id: "3", name: "Traditional Gold Earrings", code: "EAR22-003", price: 32500, image: earrings1, material: "gold", category: "Earrings" },
+  { id: "4", name: "Designer Gold Earrings", code: "EAR22-004", price: 27800, image: earrings2, material: "gold", category: "Earrings" },
+  { id: "5", name: "Gold Bangles Set", code: "BNG22-005", price: 156000, image: bangles1, material: "gold", category: "Bangles" },
+  { id: "6", name: "Classic Gold Bangles", code: "BNG22-006", price: 89000, image: bangles2, material: "gold", category: "Bangles" },
+  { id: "7", name: "925 Silver Payal Pair", code: "PYL92-007", price: 4800, image: payalSilver1, material: "silver", category: "Anklets" },
+  { id: "8", name: "925 Silver Designer Payal", code: "PYL92-008", price: 5600, image: payalSilver2, material: "silver", category: "Anklets" },
+  { id: "9", name: "Men's Gold Chain", code: "CHN22-009", price: 112000, image: mensChain, material: "gold", category: "Chains & Pendants" },
+  { id: "10", name: "Men's Gold Ring", code: "RNG22-010", price: 68000, image: mensRing, material: "gold", category: "Rings" },
+  { id: "11", name: "Men's Gold Bracelet", code: "BRC22-011", price: 74500, image: mensBracelet, material: "gold", category: "Bangles" },
+  { id: "12", name: "Gold Necklace Set", code: "SET22-012", price: 132000, image: goldSet, material: "gold", category: "Necklaces" },
 ];
 
 export const CATEGORIES = [
