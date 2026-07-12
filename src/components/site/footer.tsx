@@ -13,8 +13,16 @@ export function Footer() {
           </p>
           <div className="mt-4 flex gap-3">
             <a href="#" aria-label="Facebook" className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition-colors hover:border-primary hover:text-gold-dark"><Facebook className="h-4 w-4" /></a>
-            <a href="#" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition-colors hover:border-primary hover:text-gold-dark"><Instagram className="h-4 w-4" /></a>
+            <a href={SITE.instagram} target="_blank" rel="noreferrer noopener" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition-colors hover:border-primary hover:text-gold-dark"><Instagram className="h-4 w-4" /></a>
           </div>
+          <a
+            href={SITE.instagram}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-gold-dark hover:underline"
+          >
+            <Instagram className="h-4 w-4" /> Follow us on Instagram
+          </a>
         </div>
 
         <div>

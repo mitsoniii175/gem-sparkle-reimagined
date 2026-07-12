@@ -12,6 +12,24 @@ export const SITE = {
   whatsapp: "919898762093",
   email: "info@rasjewellers.com",
   established: "Est. 2000 · 25+ Years of Trust",
+  instagram: "https://instagram.com/rasjewellers", // TODO: replace with your real Instagram handle/link
+};
+
+/**
+ * Today's rates — EDIT THESE BY HAND EVERY DAY.
+ * Leave a value as `null` to hide that line on the site until you fill it in.
+ * Example: goldRate22k: 6540  ->  shows "22K Gold · Rs 6,540 / gram"
+ */
+export const RATES: {
+  goldRate22k: number | null;
+  goldRate24k: number | null;
+  silverRate: number | null;
+  updatedOn: string | null;
+} = {
+  goldRate22k: null,
+  goldRate24k: null,
+  silverRate: null,
+  updatedOn: null,
 };
 
 export const ANNOUNCEMENTS = [
@@ -33,23 +51,28 @@ export const NAV = [
   { label: "Create Your Own", items: [] },
 ];
 
+export type Material = "gold" | "silver" | "diamond";
+
 export type Product = {
   id: string;
   name: string;
   code: string;
   price: number;
   image: string;
+  material: Material;
 };
 
 export const TRENDING: Product[] = [
-  { id: "1", name: "Rose Gold Hexagon Link Necklace Set", code: "1RN18-188", price: 121396, image: necklace },
-  { id: "2", name: "Yellow Gold Jaguar Design Gents Ring", code: "JRG22-2032", price: 200035, image: gentsring },
-  { id: "3", name: 'Men\'s "King" Lion Face Ring', code: "JRG22-2069", price: 127219, image: lionring },
-  { id: "4", name: "Nfinity Loop Designer Ring", code: "VPLR18-257", price: 49140, image: bangle },
-  { id: "5", name: "Royal Bridal Necklace Set", code: "BRD22-901", price: 289500, image: bridal },
-  { id: "6", name: "Solitaire Drop Earrings", code: "EAR18-442", price: 38900, image: earrings },
-  { id: "7", name: "Diamond Pendant Chain", code: "PND18-118", price: 42300, image: chain },
-  { id: "8", name: "Rose Gold Hexagon Necklace", code: "1RN18-190", price: 118200, image: necklace },
+  { id: "1", name: "Rose Gold Hexagon Link Necklace Set", code: "1RN18-188", price: 121396, image: necklace, material: "gold" },
+  { id: "2", name: "Yellow Gold Jaguar Design Gents Ring", code: "JRG22-2032", price: 200035, image: gentsring, material: "gold" },
+  { id: "3", name: 'Men\'s "King" Lion Face Ring', code: "JRG22-2069", price: 127219, image: lionring, material: "gold" },
+  { id: "4", name: "Nfinity Loop Designer Ring", code: "VPLR18-257", price: 49140, image: bangle, material: "gold" },
+  { id: "5", name: "Royal Bridal Necklace Set", code: "BRD22-901", price: 289500, image: bridal, material: "gold" },
+  { id: "6", name: "Solitaire Drop Earrings", code: "EAR18-442", price: 38900, image: earrings, material: "diamond" },
+  { id: "7", name: "Diamond Pendant Chain", code: "PND18-118", price: 42300, image: chain, material: "diamond" },
+  { id: "8", name: "Rose Gold Hexagon Necklace", code: "1RN18-190", price: 118200, image: necklace, material: "gold" },
+  { id: "9", name: "925 Silver Oxidised Anklet Pair", code: "SLA92-311", price: 4200, image: bangle, material: "silver" },
+  { id: "10", name: "Sterling Silver Chain Bracelet", code: "SLB92-118", price: 3150, image: chain, material: "silver" },
 ];
 
 export const CATEGORIES = [
@@ -62,3 +85,29 @@ export const CATEGORIES = [
 ];
 
 export const inr = (n: number) => `₹ ${n.toLocaleString("en-IN")}/-`;
+
+/**
+ * Gold & Silver collection banners.
+ * Images below are free-to-use stock photography (Unsplash License) used only
+ * as placeholders — swap the `image` values for real photography of your own
+ * pieces whenever you have shots ready.
+ */
+export const MATERIAL_COLLECTIONS: {
+  title: string;
+  material: Material;
+  description: string;
+  image: string;
+}[] = [
+  {
+    title: "Gold Collection",
+    material: "gold",
+    description: "22K & 24K BIS hallmarked gold, handcrafted for everyday elegance and celebration.",
+    image: "https://images.unsplash.com/photo-1758995115867-4ef47c98824e?w=1200&auto=format&fit=crop&q=80",
+  },
+  {
+    title: "Silver Collection",
+    material: "silver",
+    description: "925 sterling silver pieces — light, versatile and made for daily wear.",
+    image: "https://images.unsplash.com/photo-1739194806935-3b4c66aee282?w=1200&auto=format&fit=crop&q=80",
+  },
+];
