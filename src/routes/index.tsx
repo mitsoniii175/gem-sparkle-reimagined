@@ -4,6 +4,7 @@ import { Header } from "@/components/site/header";
 import { Hero } from "@/components/site/hero";
 import { Services } from "@/components/site/services";
 import { Trending } from "@/components/site/trending";
+import { Gallery } from "@/components/site/gallery";
 import { Categories } from "@/components/site/categories";
 import { MaterialCollections } from "@/components/site/material-collections";
 import { GoldRateBanner } from "@/components/site/gold-rate";
@@ -22,6 +23,7 @@ function Index() {
         <Hero />
         <Services />
         <Trending />
+        <Gallery />
         <Categories />
         <MaterialCollections />
         <GoldRateBanner />
