@@ -148,15 +148,22 @@ export function Header() {
         <ul className="container-x flex items-center justify-center gap-8 py-3">
           {NAV.map((n) => (
             <li key={n.label} className="group relative">
-              <button className="text-sm font-medium text-foreground/80 transition-colors group-hover:text-gold-dark">
+              <button
+                onClick={() => handleNavClick(n.label)}
+                className="text-sm font-medium text-foreground/80 transition-colors group-hover:text-gold-dark"
+              >
                 {n.label}
               </button>
               {n.items.length > 0 && (
                 <div className="invisible absolute left-1/2 top-full z-50 mt-2 -translate-x-1/2 rounded-lg border border-border bg-card p-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
                   {n.items.map((it) => (
-                    <a key={it} href="#trending" className="block whitespace-nowrap rounded px-4 py-2 text-sm text-foreground/70 hover:bg-secondary hover:text-gold-dark">
+                    <button
+                      key={it}
+                      onClick={() => handleNavClick(it)}
+                      className="block w-full whitespace-nowrap rounded px-4 py-2 text-left text-sm text-foreground/70 hover:bg-secondary hover:text-gold-dark"
+                    >
                       {it}
-                    </a>
+                    </button>
                   ))}
                 </div>
               )}
