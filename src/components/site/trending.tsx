@@ -1,26 +1,50 @@
 import { useEffect, useMemo, useState } from "react";
 import { Heart } from "lucide-react";
-import { TRENDING, inr, type Material } from "@/lib/site-data";
+import { TRENDING, inr, type Filter } from "@/lib/site-data";
 
-export function Trending({ materialFilter }: { materialFilter: Material | "all" }) {
+export function Trending() {
   const [query, setQuery] = useState("");
+  const [filter, setFilter] = useState<Filter>({ kind: "all" });
   const [wishlist, setWishlist] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     function onSearch(e: Event) {
       setQuery((e as CustomEvent<string>).detail ?? "");
+      setFilter({ kind: "all" });
+    }
+    function onFilter(e: Event) {
+      setFilter((e as CustomEvent<Filter>).detail);
+      setQuery("");
     }
     window.addEventListener("ras-search", onSearch);
-    return () => window.removeEventListener("ras-search", onSearch);
+    window.addEventListener("ras-filter", onFilter);
+    return () => {
+      window.removeEventListener("ras-search", onSearch);
+      window.removeEventListener("ras-filter", onFilter);
+    };
   }, []);
 
   const products = useMemo(() => {
     return TRENDING.filter((p) => {
-      const matchesMaterial = materialFilter === "all" || p.material === materialFilter;
-      const matchesQuery = query.trim() === "" || p.name.toLowerCase().includes(query.trim().toLowerCase());
-      return matchesMaterial && matchesQuery;
+      const matchesFilter =
+        filter.kind === "all" ||
+        (filter.kind === "material" && p.material === filter.value) ||
+        (filter.kind === "category" && p.category === filter.value);
+      const matchesQuery =
+        query.trim() === "" || p.name.toLowerCase().includes(query.trim().toLowerCase());
+      return matchesFilter && matchesQuery;
     });
-  }, [materialFilter, query]);
+  }, [filter, query]);
+
+  const subtitle = query
+    ? `Results for "${query}"`
+    : filter.kind === "material"
+      ? `Showing our ${filter.value} collection`
+      : filter.kind === "category"
+        ? `Showing ${filter.value}`
+        : "Most loved designs at RAS Jewellers this season";
+
+  const showReset = query !== "" || filter.kind !== "all";
 
   return (
     <section id="trending" className="container-x py-16">
@@ -28,13 +52,18 @@ export function Trending({ materialFilter }: { materialFilter: Material | "all" 
         <h2 className="font-serif text-3xl md:text-4xl">
           <span className="text-gold-dark">Trending</span> Products
         </h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {query
-            ? `Results for "${query}"`
-            : materialFilter !== "all"
-              ? `Showing our ${materialFilter} collection`
-              : "Most loved designs at RAS Jewellers this season"}
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">{subtitle}</p>
+        {showReset && (
+          <button
+            onClick={() => {
+              setFilter({ kind: "all" });
+              setQuery("");
+            }}
+            className="mt-3 inline-block text-xs font-medium uppercase tracking-widest text-gold-dark underline underline-offset-4"
+          >
+            Show all products
+          </button>
+        )}
       </div>
 
       {products.length === 0 ? (
