@@ -1,21 +1,7 @@
 import { useState } from "react";
-import { Search, Heart, ShoppingBag, User, Facebook, Instagram, Menu, X } from "lucide-react";
-import { NAV, SITE, applyFilter, labelToCategory } from "@/lib/site-data";
+import { Search, Heart, ShoppingBag, User, Instagram, Menu, X } from "lucide-react";
+import { NAV, SITE, triggerNavClick } from "@/lib/site-data";
 import logo from "@/assets/ras-logo.jpg";
-
-function handleNavClick(label: string) {
-  const cat = labelToCategory(label);
-  if (cat) {
-    applyFilter({ kind: "category", value: cat });
-    return;
-  }
-  const lower = label.toLowerCase();
-  if (lower.includes("gold")) return applyFilter({ kind: "material", value: "gold" });
-  if (lower.includes("silver")) return applyFilter({ kind: "material", value: "silver" });
-  if (lower.includes("diamond")) return applyFilter({ kind: "material", value: "diamond" });
-  // Fallback: just scroll to the products grid.
-  applyFilter({ kind: "all" });
-}
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -83,7 +69,6 @@ export function Header() {
           </button>
           <div className="mx-1 hidden h-6 w-px bg-border lg:block" />
           <div className="hidden items-center gap-2 text-muted-foreground lg:flex">
-            <a href="#" aria-label="Facebook" className="transition-colors hover:text-gold-dark"><Facebook className="h-4 w-4" /></a>
             <a href={SITE.instagram} target="_blank" rel="noreferrer noopener" aria-label="Instagram" className="transition-colors hover:text-gold-dark"><Instagram className="h-4 w-4" /></a>
           </div>
           <button
@@ -113,7 +98,7 @@ export function Header() {
               <li key={n.label}>
                 <button
                   onClick={() => {
-                    handleNavClick(n.label);
+                    triggerNavClick(n.label);
                     setMenuOpen(false);
                   }}
                   className="block w-full py-2 text-left text-sm font-medium text-foreground/80"
@@ -126,7 +111,7 @@ export function Header() {
                       <li key={it}>
                         <button
                           onClick={() => {
-                            handleNavClick(it);
+                            triggerNavClick(it);
                             setMenuOpen(false);
                           }}
                           className="block w-full py-1.5 text-left text-sm text-foreground/60 hover:text-gold-dark"
@@ -149,7 +134,7 @@ export function Header() {
           {NAV.map((n) => (
             <li key={n.label} className="group relative">
               <button
-                onClick={() => handleNavClick(n.label)}
+                onClick={() => triggerNavClick(n.label)}
                 className="text-sm font-medium text-foreground/80 transition-colors group-hover:text-gold-dark"
               >
                 {n.label}
@@ -159,7 +144,7 @@ export function Header() {
                   {n.items.map((it) => (
                     <button
                       key={it}
-                      onClick={() => handleNavClick(it)}
+                      onClick={() => triggerNavClick(it)}
                       className="block w-full whitespace-nowrap rounded px-4 py-2 text-left text-sm text-foreground/70 hover:bg-secondary hover:text-gold-dark"
                     >
                       {it}

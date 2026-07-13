@@ -17,7 +17,7 @@ export const SITE = {
   whatsapp: "919898762093",
   email: "info@rasjewellers.com",
   established: "Est. 2000 · 25+ Years of Trust",
-  instagram: "https://instagram.com/rasjewellers", // TODO: replace with your real Instagram handle/link
+  instagram: "https://www.instagram.com/rasjewelsofficial?igsh=MWM4Zzc0eWJjY3Z2YQ==",
 };
 
 /**
@@ -107,6 +107,17 @@ export function labelToCategory(label: string): Category | null {
   return map[label] ?? null;
 }
 
+/** Resolve a nav/menu label to a filter, then apply + scroll to it. Used by both header and footer nav so every button behaves the same way. */
+export function triggerNavClick(label: string) {
+  const cat = labelToCategory(label);
+  if (cat) return applyFilter({ kind: "category", value: cat });
+  const lower = label.toLowerCase();
+  if (lower.includes("gold")) return applyFilter({ kind: "material", value: "gold" });
+  if (lower.includes("silver")) return applyFilter({ kind: "material", value: "silver" });
+  if (lower.includes("diamond")) return applyFilter({ kind: "material", value: "diamond" });
+  applyFilter({ kind: "all" });
+}
+
 /**
  * PRICES BELOW ARE PLACEHOLDER ESTIMATES ONLY — these are not your real
  * per-piece prices (I don't have your weight/making-charge data).
@@ -134,6 +145,7 @@ export const CATEGORIES: { title: Category; image: string; count: number }[] = [
   { title: "Earrings", image: earrings1, count: 84 },
   { title: "Bangles", image: bangles1, count: 64 },
   { title: "Chains & Pendants", image: mensChain, count: 72 },
+  { title: "Anklets", image: payalSilver1, count: 30 },
 ];
 
 export const inr = (n: number) => `₹ ${n.toLocaleString("en-IN")}/-`;

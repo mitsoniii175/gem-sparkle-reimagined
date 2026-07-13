@@ -1,5 +1,5 @@
-import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
-import { SITE, NAV } from "@/lib/site-data";
+import { Instagram, Phone, Mail, MapPin } from "lucide-react";
+import { SITE, NAV, triggerNavClick } from "@/lib/site-data";
 
 export function Footer() {
   return (
@@ -12,7 +12,6 @@ export function Footer() {
             Crafting trust, celebrating traditions and creating timeless memories across Gujarat.
           </p>
           <div className="mt-4 flex gap-3">
-            <a href="#" aria-label="Facebook" className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition-colors hover:border-primary hover:text-gold-dark"><Facebook className="h-4 w-4" /></a>
             <a href={SITE.instagram} target="_blank" rel="noreferrer noopener" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition-colors hover:border-primary hover:text-gold-dark"><Instagram className="h-4 w-4" /></a>
           </div>
           <a
@@ -29,7 +28,11 @@ export function Footer() {
           <h4 className="font-sans text-sm font-semibold uppercase tracking-wide">Shop</h4>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             {NAV.slice(3).map((n) => (
-              <li key={n.label}><a href="#" className="hover:text-gold-dark">{n.label}</a></li>
+              <li key={n.label}>
+                <button onClick={() => triggerNavClick(n.label)} className="text-left hover:text-gold-dark">
+                  {n.label}
+                </button>
+              </li>
             ))}
           </ul>
         </div>
