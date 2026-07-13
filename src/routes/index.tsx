@@ -7,6 +7,7 @@ import { Trending } from "@/components/site/trending";
 import { Gallery } from "@/components/site/gallery";
 import { Categories } from "@/components/site/categories";
 import { MaterialCollections } from "@/components/site/material-collections";
+import { About } from "@/components/site/about";
 import { GoldRateBanner } from "@/components/site/gold-rate";
 import { Footer } from "@/components/site/footer";
 
@@ -26,6 +27,7 @@ function Index() {
         <Gallery />
         <Categories />
         <MaterialCollections />
+        <About />
         <GoldRateBanner />
       </main>
       <Footer />

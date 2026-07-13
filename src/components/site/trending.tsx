@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { Heart } from "lucide-react";
-import { TRENDING, inr, type Filter } from "@/lib/site-data";
+import { Heart, MessageCircle } from "lucide-react";
+import { TRENDING, whatsappLink, type Filter } from "@/lib/site-data";
 
 export function Trending() {
   const [query, setQuery] = useState("");
@@ -96,7 +96,14 @@ export function Trending() {
                   {p.name}
                 </h3>
                 <p className="mt-1 text-xs text-muted-foreground">{p.code}</p>
-                <p className="mt-2 text-sm font-semibold text-gold-dark">{inr(p.price)}</p>
+                <a
+                  href={whatsappLink(`Hi RAS Jewellers, I'd like to enquire about ${p.name} (${p.code}).`)}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-dark hover:underline"
+                >
+                  <MessageCircle className="h-4 w-4" /> Enquire for Price
+                </a>
               </div>
             </article>
           ))}

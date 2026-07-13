@@ -1,5 +1,5 @@
 import { Instagram, Phone, Mail, MapPin } from "lucide-react";
-import { SITE, NAV, triggerNavClick } from "@/lib/site-data";
+import { SITE, CATEGORIES, applyFilter } from "@/lib/site-data";
 
 export function Footer() {
   return (
@@ -27,10 +27,10 @@ export function Footer() {
         <div>
           <h4 className="font-sans text-sm font-semibold uppercase tracking-wide">Shop</h4>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-            {NAV.slice(3).map((n) => (
-              <li key={n.label}>
-                <button onClick={() => triggerNavClick(n.label)} className="text-left hover:text-gold-dark">
-                  {n.label}
+            {CATEGORIES.map((c) => (
+              <li key={c.title}>
+                <button onClick={() => applyFilter({ kind: "category", value: c.title })} className="text-left hover:text-gold-dark">
+                  {c.title}
                 </button>
               </li>
             ))}

@@ -37,6 +37,20 @@ export const RATES: {
   updatedOn: null,
 };
 
+export const ABOUT = {
+  heading: "Our Story",
+  paragraphs: [
+    "RAS Jewellers has been a trusted name in Gujarat since 2000 — over 25 years of crafting gold and silver jewellery for life's biggest celebrations and everyday elegance.",
+    "What started as a single family showroom has grown into two — in Haldharvas and Khatlal — while staying true to the same values: honest pricing, certified purity, and jewellery made to last generations.",
+    "Every piece we sell is 100% BIS hallmarked and HUID enabled, so you can buy with complete confidence. From bridal sets to everyday silver, we craft each design with the same care we'd want for our own family.",
+  ],
+  highlights: [
+    { label: "Established", value: "2000" },
+    { label: "Showrooms", value: "2 · Haldharvas & Khatlal" },
+    { label: "Hallmarking", value: "100% BIS · HUID Enabled" },
+  ],
+};
+
 export const ANNOUNCEMENTS = [
   "100% BIS Hallmarked Jewellery",
   "HUID Enabled",
@@ -46,17 +60,15 @@ export const ANNOUNCEMENTS = [
 ];
 
 export const NAV = [
-  { label: "Investment Plan", items: ["Gold Savings", "Monthly Plan"] },
   { label: "Home", items: [] },
-  { label: "Our Brands", items: ["RAS Gold", "RAS Silver", "RAS Diamonds"] },
-  { label: "Shop", items: ["Rings", "Necklaces", "Earrings", "Bangles", "Chains"] },
-  { label: "Collection", items: ["Bridal", "Wedding", "Daily Wear", "Antique"] },
-  { label: "Gifts", items: ["For Her", "For Him", "For Kids"] },
-  { label: "Product Family", items: ["Gold", "Silver", "Diamond"] },
-  { label: "Create Your Own", items: [] },
+  { label: "Shop", items: ["Necklaces", "Rings", "Earrings", "Bangles", "Chains & Pendants", "Anklets"] },
+  { label: "Bridal Collection", items: [] },
+  { label: "Our Brands", items: ["RAS Gold", "RAS Silver"] },
+  { label: "Custom Design", items: [] },
+  { label: "About Us", items: [] },
 ];
 
-export type Material = "gold" | "silver" | "diamond";
+export type Material = "gold" | "silver";
 
 export type Category =
   | "Necklaces"
@@ -101,27 +113,45 @@ export function labelToCategory(label: string): Category | null {
     "Chains & Pendants": "Chains & Pendants",
     "Bridal Sets": "Bridal Sets",
     Bridal: "Bridal Sets",
+    "Bridal Collection": "Bridal Sets",
     Anklets: "Anklets",
     Payal: "Anklets",
   };
   return map[label] ?? null;
 }
 
+/** WhatsApp link with a pre-filled message — used for custom design / enquiry buttons. */
+export const whatsappLink = (message: string) =>
+  `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(message)}`;
+
 /** Resolve a nav/menu label to a filter, then apply + scroll to it. Used by both header and footer nav so every button behaves the same way. */
 export function triggerNavClick(label: string) {
+  if (label === "Home") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+  if (label === "About Us") {
+    const about = document.getElementById("about");
+    if (about) about.scrollIntoView({ behavior: "smooth" });
+    return;
+  }
+  if (label === "Custom Design") {
+    window.open(whatsappLink("Hi RAS Jewellers, I'd like to enquire about a custom design."), "_blank");
+    return;
+  }
   const cat = labelToCategory(label);
   if (cat) return applyFilter({ kind: "category", value: cat });
   const lower = label.toLowerCase();
   if (lower.includes("gold")) return applyFilter({ kind: "material", value: "gold" });
   if (lower.includes("silver")) return applyFilter({ kind: "material", value: "silver" });
-  if (lower.includes("diamond")) return applyFilter({ kind: "material", value: "diamond" });
   applyFilter({ kind: "all" });
 }
 
 /**
- * PRICES BELOW ARE PLACEHOLDER ESTIMATES ONLY — these are not your real
- * per-piece prices (I don't have your weight/making-charge data).
- * Please update `price` and `code` for each item with your actual figures.
+ * `price` is kept here for your own internal reference only — it is NOT shown
+ * on the site anymore (per your request). Customers see "Enquire for Price"
+ * with a WhatsApp button instead. Feel free to update these numbers whenever
+ * you like; they simply won't be displayed publicly.
  */
 export const TRENDING: Product[] = [
   { id: "1", name: "Bridal Gold Necklace Set", code: "BRD22-001", price: 285000, image: necklaceBridal, material: "gold", category: "Bridal Sets" },

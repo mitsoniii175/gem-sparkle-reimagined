@@ -1,16 +1,23 @@
-import { RATES } from "@/lib/site-data";
+import { RATES, SITE } from "@/lib/site-data";
 
 export function GoldRateBanner() {
   const { goldRate22k, goldRate24k, silverRate, updatedOn } = RATES;
   const hasAnyRate = goldRate22k !== null || goldRate24k !== null || silverRate !== null;
 
-  // Nothing filled in yet -> don't show a banner with fake numbers.
+  // Nothing filled in yet -> point people to Instagram for the daily rate instead of showing fake numbers.
   if (!hasAnyRate) {
     return (
       <section className="bg-primary text-primary-foreground">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-center">
           <p className="text-xs uppercase tracking-[0.3em] opacity-80">Today's Rate</p>
-          <p className="font-serif text-lg">Call us for today's gold &amp; silver rates</p>
+          <a
+            href={SITE.instagram}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="font-serif text-lg underline underline-offset-4 hover:opacity-90"
+          >
+            Follow us on Instagram for today's gold &amp; silver rates
+          </a>
         </div>
       </section>
     );

@@ -1,9 +1,9 @@
-import { ShieldCheck, BadgeIndianRupee, Gem, Truck } from "lucide-react";
+import { ShieldCheck, BadgeIndianRupee, Sparkles, Truck } from "lucide-react";
 
 const items = [
   { icon: ShieldCheck, title: "100% BIS Hallmarked", desc: "Every piece certified & HUID enabled" },
   { icon: BadgeIndianRupee, title: "Transparent Pricing", desc: "Live gold rates, no hidden charges" },
-  { icon: Gem, title: "Certified Diamonds", desc: "IGI / GIA certified solitaires" },
+  { icon: Sparkles, title: "Handcrafted Designs", desc: "Traditional artistry, made with care" },
   { icon: Truck, title: "Safe Home Delivery", desc: "Insured shipping across India" },
 ];
 

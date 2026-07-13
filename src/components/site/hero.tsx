@@ -5,7 +5,7 @@ export function Hero() {
     <section className="relative overflow-hidden">
       <img
         src={hero}
-        alt="RAS Jewellers gold and diamond necklace"
+        alt="RAS Jewellers gold necklace"
         width={1600}
         height={900}
         className="h-[420px] w-full object-cover md:h-[560px]"
@@ -21,7 +21,7 @@ export function Hero() {
               Timeless Gold,<br />Crafted with Trust
             </h1>
             <p className="mt-4 max-w-md text-sm text-muted-foreground md:text-base">
-              Discover BIS hallmarked 22K &amp; 24K gold, diamond and 925 silver jewellery —
+              Discover BIS hallmarked 22K &amp; 24K gold and 925 silver jewellery —
               handcrafted for every celebration.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
