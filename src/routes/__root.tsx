@@ -91,6 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Shop exquisite 22K & 24K gold and 925 silver jewellery from RAS Jewellers. 100% BIS hallmarked, trusted for 25+ years across Gujarat.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://rasjewllers-co-in.lovable.app/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "RAS Jewellers | Online Gold & Silver Jewellery in Gujarat" },
       { name: "twitter:description", content: "Shop exquisite 22K & 24K gold and 925 silver jewellery from RAS Jewellers. 100% BIS hallmarked, trusted for 25+ years across Gujarat." },
@@ -102,6 +103,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "canonical", href: "https://rasjewllers-co-in.lovable.app/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -109,6 +111,40 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "JewelryStore",
+          name: "RAS Jewellers",
+          description:
+            "Online gold and silver jewellery store in Gujarat. 100% BIS hallmarked 22K & 24K gold and 925 sterling silver jewellery.",
+          url: "https://rasjewllers-co-in.lovable.app/",
+          telephone: "+91 98987 62093",
+          email: "info@rasjewellers.com",
+          image:
+            "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/518f0830-9cd2-48f9-87db-8ae56a82c17d",
+          address: [
+            {
+              "@type": "PostalAddress",
+              streetAddress: "Haldharvas Showroom",
+              addressRegion: "Gujarat",
+              addressCountry: "IN",
+            },
+            {
+              "@type": "PostalAddress",
+              streetAddress: "Khatlal Showroom",
+              addressRegion: "Gujarat",
+              addressCountry: "IN",
+            },
+          ],
+          sameAs: [
+            "https://www.instagram.com/rasjewelsofficial?igsh=MWM4Zzc0eWJjY3Z2YQ==",
+          ],
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,

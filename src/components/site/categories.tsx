@@ -18,7 +18,7 @@ export function Categories() {
               <div className="overflow-hidden rounded-full ring-1 ring-border transition-all group-hover:ring-2 group-hover:ring-primary">
                 <img
                   src={c.image}
-                  alt={c.title}
+                  alt={`Shop our ${c.title} collection at RAS Jewellers`}
                   width={300}
                   height={300}
                   loading="lazy"
