@@ -1,0 +1,13 @@
+# RAS Jewellers
+
+> Online gold and silver jewellery store in Gujarat, India. 100% BIS hallmarked 22K & 24K gold and 925 sterling silver jewellery, trusted for 25+ years with showrooms in Haldharvas and Khatlal.
+
+RAS Jewellers offers handcrafted necklaces, rings, earrings, bangles, chains, pendants, anklets and bridal jewellery sets. Every piece is BIS hallmarked and HUID enabled, with transparent pricing based on live gold rates.
+
+## Pages
+
+- [Home](/): Featured collections, categories, live gold rates, and services.
+
+## Optional
+
+- [Sitemap](/sitemap.xml): Full list of indexable pages.

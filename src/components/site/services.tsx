@@ -10,6 +10,7 @@ const items = [
 export function Services() {
   return (
     <section id="services" className="container-x py-14">
+      <h2 className="sr-only">Why shop with RAS Jewellers</h2>
       <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
         {items.map((it) => (
           <div key={it.title} className="flex flex-col items-center rounded-xl border border-border bg-card p-6 text-center">

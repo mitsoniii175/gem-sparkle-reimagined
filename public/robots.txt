@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://rasjewllers-co-in.lovable.app/sitemap.xml
