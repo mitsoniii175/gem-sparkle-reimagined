@@ -38,12 +38,23 @@ export const RATES: {
 };
 
 export const ABOUT = {
-  heading: "Our Story",
+  heading: "About RAS JEWELLERS",
   paragraphs: [
-    "RAS Jewellers has been a trusted name in Gujarat since 2000 — over 25 years of crafting gold and silver jewellery for life's biggest celebrations and everyday elegance.",
-    "What started as a single family showroom has grown into two — in Haldharvas and Khatlal — while staying true to the same values: honest pricing, certified purity, and jewellery made to last generations.",
-    "Every piece we sell is 100% BIS hallmarked and HUID enabled, so you can buy with complete confidence. From bridal sets to everyday silver, we craft each design with the same care we'd want for our own family.",
+    "For over 25 years, RAS JEWELLERS has been a symbol of trust, purity, and timeless craftsmanship. Our journey began in Haldharvas, where we earned the confidence of generations through genuine quality, transparent service, and beautifully crafted jewellery. Today, with the opening of our new showroom in Khatlal, we are proud to bring the same legacy of excellence to even more families.",
+    "Every jewellery piece we create tells a story. From elegant everyday collections to magnificent bridal masterpieces, our carefully curated range of Gold, Silver and Bridal Jewellery is designed to celebrate life's most precious moments. Each design reflects exceptional artistry, certified purity, and attention to every detail.",
+    "At RAS JEWELLERS, we believe jewellery is more than an accessory. It is a reflection of tradition, love, achievement, and memories that are cherished for generations. Our commitment to authenticity, fair pricing, and personalized customer service has made us a trusted destination for thousands of happy customers.",
+    "Whether you're celebrating a wedding, an anniversary, a festival, or simply looking for something special, our experienced team is dedicated to helping you find the perfect piece that matches your style and emotions.",
+    "Visit us at our Haldharvas or Khatlal showroom and experience a world where heritage meets modern elegance.",
   ],
+  promise: [
+    "25+ Years of Trusted Excellence",
+    "Certified Purity & Quality Assurance",
+    "Exclusive Gold & Silver Collections",
+    "Bridal Jewellery Specialists",
+    "Transparent Pricing",
+    "Personalized Customer Service",
+  ],
+  tagline: "Crafting Timeless Elegance, One Generation at a Time.",
   highlights: [
     { label: "Established", value: "2000" },
     { label: "Showrooms", value: "2 · Haldharvas & Khatlal" },
