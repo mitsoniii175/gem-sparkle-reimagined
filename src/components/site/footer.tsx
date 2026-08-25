@@ -1,5 +1,5 @@
 import { Instagram, Phone, Mail, MapPin } from "lucide-react";
-import { SITE, CATEGORIES, applyFilter } from "@/lib/site-data";
+import { SITE, COLLECTIONS, applyFilter } from "@/lib/site-data";
 
 export function Footer() {
   return (
@@ -25,11 +25,11 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="font-sans text-sm font-semibold uppercase tracking-wide">Shop</h4>
+          <h4 className="font-sans text-sm font-semibold uppercase tracking-wide">Collections</h4>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-            {CATEGORIES.map((c) => (
+            {COLLECTIONS.map((c) => (
               <li key={c.title}>
-                <button onClick={() => applyFilter({ kind: "category", value: c.title })} className="text-left hover:text-gold-dark">
+                <button onClick={() => applyFilter(c.filter)} className="text-left hover:text-gold-dark">
                   {c.title}
                 </button>
               </li>

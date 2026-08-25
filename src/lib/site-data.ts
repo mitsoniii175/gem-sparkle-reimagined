@@ -90,6 +90,8 @@ export type Category =
   | "Chains & Pendants"
   | "Anklets";
 
+export type Collection = "women" | "men" | "bridal" | "silver";
+
 export type Product = {
   id: string;
   name: string;
@@ -104,7 +106,8 @@ export type Product = {
 export type Filter =
   | { kind: "all" }
   | { kind: "material"; value: Material }
-  | { kind: "category"; value: Category };
+  | { kind: "category"; value: Category }
+  | { kind: "collection"; value: Collection };
 
 /** Broadcast a filter so the Trending section can react from anywhere. */
 export function applyFilter(filter: Filter) {
@@ -179,14 +182,11 @@ export const TRENDING: Product[] = [
   { id: "12", name: "Gold Necklace Set", code: "SET22-012", price: 132000, image: goldSet, material: "gold", category: "Necklaces" },
 ];
 
-export const CATEGORIES: { title: Category; image: string; count: number }[] = [
-  { title: "Necklaces", image: necklaceClassic, count: 120 },
-  { title: "Rings", image: mensRing, count: 96 },
-  { title: "Bridal Sets", image: necklaceBridal, count: 48 },
-  { title: "Earrings", image: earrings1, count: 84 },
-  { title: "Bangles", image: bangles1, count: 64 },
-  { title: "Chains & Pendants", image: mensChain, count: 72 },
-  { title: "Anklets", image: payalSilver1, count: 30 },
+export const COLLECTIONS: { title: string; image: string; filter: Filter }[] = [
+  { title: "Women's Jewellery", image: goldSet, filter: { kind: "collection", value: "women" } },
+  { title: "Men's Jewellery", image: mensChain, filter: { kind: "collection", value: "men" } },
+  { title: "Bridal Collection", image: necklaceBridal, filter: { kind: "category", value: "Bridal Sets" } },
+  { title: "Silver Collection", image: payalSilver2, filter: { kind: "material", value: "silver" } },
 ];
 
 export const inr = (n: number) => `₹ ${n.toLocaleString("en-IN")}/-`;
