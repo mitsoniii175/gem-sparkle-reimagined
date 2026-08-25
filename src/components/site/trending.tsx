@@ -26,10 +26,13 @@ export function Trending() {
 
   const products = useMemo(() => {
     return TRENDING.filter((p) => {
-      const matchesFilter =
-        filter.kind === "all" ||
-        (filter.kind === "material" && p.material === filter.value) ||
-        (filter.kind === "category" && p.category === filter.value);
+      let matchesFilter = true;
+      if (filter.kind === "material") matchesFilter = p.material === filter.value;
+      else if (filter.kind === "category") matchesFilter = p.category === filter.value;
+      else if (filter.kind === "collection") {
+        if (filter.value === "men") matchesFilter = p.name.toLowerCase().includes("men's");
+        else if (filter.value === "women") matchesFilter = !p.name.toLowerCase().includes("men's");
+      }
       const matchesQuery =
         query.trim() === "" || p.name.toLowerCase().includes(query.trim().toLowerCase());
       return matchesFilter && matchesQuery;
@@ -42,7 +45,9 @@ export function Trending() {
       ? `Showing our ${filter.value} collection`
       : filter.kind === "category"
         ? `Showing ${filter.value}`
-        : "Most loved designs at RAS Jewellers this season";
+        : filter.kind === "collection"
+          ? `Showing ${filter.value === "men" ? "Men's" : "Women's"} Jewellery`
+          : "Most loved designs at RAS Jewellers this season";
 
   const showReset = query !== "" || filter.kind !== "all";
 
