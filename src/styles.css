@@ -39,7 +39,7 @@
 :root {
   --radius: 0.5rem;
 
-  --cream: oklch(0.985 0.008 85);
+  --cream: oklch(0.965 0.008 85);
   --gold: oklch(0.72 0.11 75);
   --gold-dark: oklch(0.55 0.1 70);
 
