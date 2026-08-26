@@ -100,7 +100,12 @@ export type Product = {
   image: string;
   material: Material;
   category: Category;
+  /** e.g. "22KT", "18KT", "925 Silver" */
+  purity: string;
+  /** approx gross weight, e.g. "12.4 g" */
+  weight: string;
 };
+
 
 /** A single active filter shared across the site (nav, tiles, search). */
 export type Filter =
@@ -168,18 +173,19 @@ export function triggerNavClick(label: string) {
  * you like; they simply won't be displayed publicly.
  */
 export const TRENDING: Product[] = [
-  { id: "1", name: "Bridal Gold Necklace Set", code: "BRD22-001", price: 285000, image: necklaceBridal, material: "gold", category: "Bridal Sets" },
-  { id: "2", name: "Classic Gold Necklace", code: "NCK22-002", price: 98500, image: necklaceClassic, material: "gold", category: "Necklaces" },
-  { id: "3", name: "Traditional Gold Earrings", code: "EAR22-003", price: 32500, image: earrings1, material: "gold", category: "Earrings" },
-  { id: "4", name: "Designer Gold Earrings", code: "EAR22-004", price: 27800, image: earrings2, material: "gold", category: "Earrings" },
-  { id: "5", name: "Gold Bangles Set", code: "BNG22-005", price: 156000, image: bangles1, material: "gold", category: "Bangles" },
-  { id: "6", name: "Classic Gold Bangles", code: "BNG22-006", price: 89000, image: bangles2, material: "gold", category: "Bangles" },
-  { id: "7", name: "925 Silver Payal Pair", code: "PYL92-007", price: 4800, image: payalSilver1, material: "silver", category: "Anklets" },
-  { id: "8", name: "925 Silver Designer Payal", code: "PYL92-008", price: 5600, image: payalSilver2, material: "silver", category: "Anklets" },
-  { id: "9", name: "Men's Gold Chain", code: "CHN22-009", price: 112000, image: mensChain, material: "gold", category: "Chains & Pendants" },
-  { id: "10", name: "Men's Gold Ring", code: "RNG22-010", price: 68000, image: mensRing, material: "gold", category: "Rings" },
-  { id: "11", name: "Men's Gold Bracelet", code: "BRC22-011", price: 74500, image: mensBracelet, material: "gold", category: "Bangles" },
-  { id: "12", name: "Gold Necklace Set", code: "SET22-012", price: 132000, image: goldSet, material: "gold", category: "Necklaces" },
+  { id: "1", name: "Bridal Gold Necklace Set", code: "BRD22-001", price: 285000, image: necklaceBridal, material: "gold", category: "Bridal Sets", purity: "22KT", weight: "58.4 g" },
+  { id: "2", name: "Classic Gold Necklace", code: "NCK22-002", price: 98500, image: necklaceClassic, material: "gold", category: "Necklaces", purity: "22KT", weight: "21.6 g" },
+  { id: "3", name: "Traditional Gold Earrings", code: "EAR22-003", price: 32500, image: earrings1, material: "gold", category: "Earrings", purity: "22KT", weight: "7.2 g" },
+  { id: "4", name: "Designer Gold Earrings", code: "EAR22-004", price: 27800, image: earrings2, material: "gold", category: "Earrings", purity: "18KT", weight: "6.1 g" },
+  { id: "5", name: "Gold Bangles Set", code: "BNG22-005", price: 156000, image: bangles1, material: "gold", category: "Bangles", purity: "22KT", weight: "34.8 g" },
+  { id: "6", name: "Classic Gold Bangles", code: "BNG22-006", price: 89000, image: bangles2, material: "gold", category: "Bangles", purity: "22KT", weight: "19.7 g" },
+  { id: "7", name: "925 Silver Payal Pair", code: "PYL92-007", price: 4800, image: payalSilver1, material: "silver", category: "Anklets", purity: "925 Silver", weight: "42.0 g" },
+  { id: "8", name: "925 Silver Designer Payal", code: "PYL92-008", price: 5600, image: payalSilver2, material: "silver", category: "Anklets", purity: "925 Silver", weight: "48.5 g" },
+  { id: "9", name: "Men's Gold Chain", code: "CHN22-009", price: 112000, image: mensChain, material: "gold", category: "Chains & Pendants", purity: "22KT", weight: "24.9 g" },
+  { id: "10", name: "Men's Gold Ring", code: "RNG22-010", price: 68000, image: mensRing, material: "gold", category: "Rings", purity: "18KT", weight: "9.3 g" },
+  { id: "11", name: "Men's Gold Bracelet", code: "BRC22-011", price: 74500, image: mensBracelet, material: "gold", category: "Bangles", purity: "22KT", weight: "16.5 g" },
+  { id: "12", name: "Gold Necklace Set", code: "SET22-012", price: 132000, image: goldSet, material: "gold", category: "Necklaces", purity: "22KT", weight: "29.2 g" },
+
 ];
 
 export const COLLECTIONS: { title: string; image: string; filter: Filter }[] = [
