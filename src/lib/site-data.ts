@@ -195,6 +195,44 @@ export const COLLECTIONS: { title: string; image: string; filter: Filter }[] = [
   { title: "Silver Collection", image: payalSilver2, filter: { kind: "material", value: "silver" } },
 ];
 
+/** Look up a single product by its id — used by the product details page. */
+export function getProduct(id: string): Product | undefined {
+  return TRENDING.find((p) => p.id === id);
+}
+
+/** Related products: same category first, then same material. */
+export function getRelatedProducts(product: Product, limit = 4): Product[] {
+  const sameCategory = TRENDING.filter((p) => p.id !== product.id && p.category === product.category);
+  const sameMaterial = TRENDING.filter(
+    (p) => p.id !== product.id && p.category !== product.category && p.material === product.material
+  );
+  return [...sameCategory, ...sameMaterial].slice(0, limit);
+}
+
+/** Indicative making charges — shown as a range, final quote given in store. */
+export function makingCharges(product: Product): string {
+  return product.material === "gold"
+    ? "8% – 14% of gold value (design dependent)"
+    : "₹ 60 – ₹ 90 per gram";
+}
+
+/** Indicative delivery / availability info. */
+export function estimatedDelivery(product: Product): string {
+  return product.category === "Bridal Sets"
+    ? "Ready to collect in showroom · 10–15 days for custom bridal orders"
+    : "Ready to collect in showroom · 3–7 days for sizing or custom orders";
+}
+
+export const JEWELLERY_CARE = [
+  "Store each piece separately in a soft pouch or lined box to avoid scratches.",
+  "Remove jewellery before swimming, bathing, exercising or applying perfume.",
+  "Wipe gently with a soft dry cloth after every wear to retain the shine.",
+  "Keep silver away from moisture and humidity to slow natural tarnishing.",
+  "Avoid contact with household chemicals, bleach and cosmetics.",
+  "Bring your jewellery to our showroom for free professional cleaning and polishing.",
+];
+
+
 export const inr = (n: number) => `₹ ${n.toLocaleString("en-IN")}/-`;
 
 /**
